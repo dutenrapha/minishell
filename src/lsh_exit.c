@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lsh_loop.c                                         :+:      :+:    :+:   */
+/*   lsh_exit.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/07 21:00:48 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/05/10 21:43:21 by rdutenke         ###   ########.fr       */
+/*   Created: 2021/05/10 21:07:06 by rdutenke          #+#    #+#             */
+/*   Updated: 2021/05/10 21:20:05 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/header.h"
 
-void	lsh_loop(void)
+int lsh_exit(char **args)
 {
-	char	*line;
-	char	**args;
-	int		status;
-
-	status = 1;
-	while (status)
-	{
-		printf("> ");
-		line = lsh_read_line();
-		args = ft_split(line, LSH_TOK_DELIM);
-		status = lsh_execute(args);
-		free(line);
-		free(args);
-	}
+	if (args[0] == NULL)
+		args[0] = args[0];
+	return (0);
 }

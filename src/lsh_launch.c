@@ -1,31 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lsh_loop.c                                         :+:      :+:    :+:   */
+/*   lsh_launch.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/07 21:00:48 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/05/10 21:43:21 by rdutenke         ###   ########.fr       */
+/*   Created: 2021/05/10 21:13:17 by rdutenke          #+#    #+#             */
+/*   Updated: 2021/05/10 21:41:27 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/header.h"
 
-void	lsh_loop(void)
+int	lsh_launch(char **args)
 {
-	char	*line;
-	char	**args;
+	pid_t	pid;
+	pid_t	wpid;
 	int		status;
 
-	status = 1;
-	while (status)
+	pid = fork();
+	if (pid == 0)
 	{
-		printf("> ");
-		line = lsh_read_line();
-		args = ft_split(line, LSH_TOK_DELIM);
-		status = lsh_execute(args);
-		free(line);
-		free(args);
+		if (execvp(args[0], args) == -1)
+		{
+			perror("lsh");
+		}
+		exit(EXIT_FAILURE);
 	}
+	if (pid < 0)
+	{
+		perror("lsh");
+	}
+	else
+	{
+		wpid = waitpid(pid, &status, WUNTRACED);
+		if (wpid == 0)
+			wpid = wpid;
+		while (!WIFEXITED(status) && !WIFSIGNALED(status))
+		{
+			wpid = waitpid(pid, &status, WUNTRACED);
+		}
+	}
+	return (1);
 }
