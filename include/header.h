@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 21:20:32 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/05/10 21:48:25 by rdutenke         ###   ########.fr       */
+/*   Updated: 2021/05/11 15:33:35 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,17 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
+# include <error.h>
 # include <sys/wait.h>
 # include "../lib/libft/libft.h"
+
+typedef struct s_read
+{
+	int		bufsize;
+	int		position;
+	char	*buffer;
+	int		c;
+}						t_read;
 
 void	lsh_loop(void);
 int		ft_getchar(void);

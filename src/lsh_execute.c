@@ -6,17 +6,17 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 22:58:36 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/05/10 21:54:17 by rdutenke         ###   ########.fr       */
+/*   Updated: 2021/05/10 22:38:23 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/header.h"
 
-int lsh_execute(char **args)
+int	lsh_execute(char **args)
 {
 	int		i;
 	char	*builtin_str[2];
-	int		(*builtin_func[2]) (char **);
+	int		(*builtin_func[2])(char **);
 
 	builtin_str[0] = "cd";
 	builtin_str[1] = "exit";
@@ -29,7 +29,7 @@ int lsh_execute(char **args)
 	{
 		if (ft_strncmp(args[0], builtin_str[i], ft_strlen(args[0])) == 0)
 		{
-			return (*builtin_func[i])(args);
+			return ((*builtin_func[i])(args));
 		}
 		i++;
 	}

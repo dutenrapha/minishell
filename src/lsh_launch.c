@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 21:13:17 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/05/10 21:41:27 by rdutenke         ###   ########.fr       */
+/*   Updated: 2021/05/11 15:38:55 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,11 @@ int	lsh_launch(char **args)
 	if (pid == 0)
 	{
 		if (execvp(args[0], args) == -1)
-		{
-			perror("lsh");
-		}
+			printf("error -1");
 		exit(EXIT_FAILURE);
 	}
 	if (pid < 0)
-	{
-		perror("lsh");
-	}
+		printf("error -1");
 	else
 	{
 		wpid = waitpid(pid, &status, WUNTRACED);
