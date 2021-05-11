@@ -1,14 +1,18 @@
 SRC_PATH = ./src
 OBJ_PATH = ./obj
 LIB_PATH = ./lib
+LIB_TESTS = ./tests
 LIBFT_PATH = ./lib/libft
 
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
 LIB_NAME = minishaell.a
 LIBFT_NAME = libft.a
+TESTS_NAME = executable
 NAME = minishell
+
 MAIN = main.c
+TESTS_SRC = executable.c
 
 LIB = $(LIB_PATH)/$(LIB_NAME)
 LIBFT = $(LIBFT_PATH)/$(LIBFT_NAME)
@@ -24,15 +28,22 @@ clean:
 fclean:	clean
 	@rm -f $(LIB_PATH)/*.a
 	@rm -f $(LIBFT_PATH)/*.a
+	@rm -f $(LIB_TESTS)/$(TESTS_NAME)
 	@rm -f $(NAME)
 	@rm -f *.o
 	@rm -fR *.dSYM
 	@rm -fR obj
 
-re: fclean all
+re: fclean all run
 
 config:
+	@$(CC) $(FLAGS) $(LIB_TESTS)/$(TESTS_SRC) -o $(LIB_TESTS)/$(TESTS_NAME)
 	@mkdir obj
+
+run:
+	@clear
+	@./$(NAME)
+
 $(NAME):	$(LIBFT) $(LIB)
 	@$(CC) $(FLAGS) $(MAIN) -g $(LIB) $(LIBFT) -o $@
 

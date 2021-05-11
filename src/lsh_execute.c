@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 22:58:36 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/05/10 22:38:23 by rdutenke         ###   ########.fr       */
+/*   Updated: 2021/05/11 20:29:37 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,15 @@
 int	lsh_execute(char **args)
 {
 	int		i;
-	char	*builtin_str[2];
-	int		(*builtin_func[2])(char **);
+	char	*builtin_str[LSH_NUM_BUILTINS];
+	int		(*builtin_func[LSH_NUM_BUILTINS])(char **);
 
-	builtin_str[0] = "cd";
-	builtin_str[1] = "exit";
+	builtin_str[0] = "m_cd";
+	builtin_str[1] = "m_exit";
+	builtin_str[2] = "m_pwd";
 	builtin_func[0] = &lsh_cd;
 	builtin_func[1] = &lsh_exit;
+	builtin_func[2] = &lsh_pwd;
 	if (args[0] == NULL)
 		return (1);
 	i = 0;

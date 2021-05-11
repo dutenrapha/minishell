@@ -1,41 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lsh_launch.c                                       :+:      :+:    :+:   */
+/*   lsh_pwd.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/10 21:13:17 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/05/11 16:02:49 by rdutenke         ###   ########.fr       */
+/*   Created: 2021/05/11 18:27:01 by rdutenke          #+#    #+#             */
+/*   Updated: 2021/05/11 20:30:18 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/header.h"
 
-int	lsh_launch(char **args)
+int	lsh_pwd(char **args)
 {
-	pid_t	pid;
-	pid_t	wpid;
-	int		status;
+	char	cwd[1024];
 
-	pid = fork();
-	if (pid == 0)
-	{
-		if (execvp(args[0], args) == -1)
-			ft_printf("error -1\n");
-		exit(EXIT_FAILURE);
-	}
-	if (pid < 0)
-		ft_printf("error -1\n");
-	else
-	{
-		wpid = waitpid(pid, &status, WUNTRACED);
-		if (wpid == 0)
-			wpid = wpid;
-		while (!WIFEXITED(status) && !WIFSIGNALED(status))
-		{
-			wpid = waitpid(pid, &status, WUNTRACED);
-		}
-	}
+	if (args[0] == NULL)
+		args[0] = args[0];
+	getcwd(cwd, sizeof(cwd));
+	ft_printf("%s\n", cwd);
 	return (1);
 }
