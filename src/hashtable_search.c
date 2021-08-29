@@ -1,44 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lsh_loop.c                                         :+:      :+:    :+:   */
+/*   hashtable_search.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/07 21:00:48 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/08/29 19:55:01 by aalcara-         ###   ########.fr       */
+/*   Created: 2021/08/27 22:23:42 by aalcara-          #+#    #+#             */
+/*   Updated: 2021/08/29 20:01:02 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/header.h"
 
-void	free_array(char **array)
+char	*ht_search(t_hashtable *table, char *key)
 {
-	int	i;
+	int			index;
+	t_ht_item	*item;
 
-	i = 0;
-	while (array[i])
-	{
-		free(array[i]);
-		i++;
-	}
-	free(array);
-}
-
-void	lsh_loop(void)
-{
-	char	*line;
-	char	**args;
-	int		status;
-
-	status = 1;
-	while (status)
-	{
-		ft_printf("> ");
-		line = lsh_read_line();
-		args = ft_split(line, LSH_TOK_DELIM);
-		status = lsh_execute(args);
-		free(line);
-		free_array(args);
-	}
+	index = hash_function(key, table->size);
+	item = table->items[index];
+	if (item == NULL)
+		return (NULL);
+	while (item->next != NULL && ft_strcmp(item->key, key) != 0)
+		item = item->next;
+	if (ft_strcmp(item->key, key) == 0)
+		return (item->value);
+	return (NULL);
 }

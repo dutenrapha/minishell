@@ -5,7 +5,7 @@ LIB_TESTS = ./tests
 LIBFT_PATH = ./lib/libft
 
 CC = gcc
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 LIB_NAME = minishaell.a
 LIBFT_NAME = libft.a
 TESTS_NAME = executable

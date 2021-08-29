@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/27 12:40:11 by rdutenke          #+#    #+#              #
-#    Updated: 2021/04/19 14:58:33 by rdutenke         ###   ########.fr        #
+#    Updated: 2021/08/28 14:23:33 by aalcara-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = libft.a
 COMPI = gcc
 
 FUNCTIONS = ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c ft_memcmp.c\
-		ft_memchr.c ft_strlcpy.c ft_strlcat.c ft_strnstr.c ft_strncmp.c \
+		ft_memchr.c ft_strlcpy.c ft_strcpy.c ft_strlcat.c ft_strnstr.c ft_strncmp.c ft_strcmp.c \
 		ft_isalpha.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_toupper.c ft_tolower.c \
 		ft_strtrim.c ft_split.c ft_countword.c ft_shift.c ft_shift2.c ft_strmapi.c	 \
 		ft_putendl_fd.c ft_putnbr_fd.c ft_printf.c ft_check_flag.c ft_int_len.c ft_print_x.c ft_itoa_base.c ft_print_xup.c \

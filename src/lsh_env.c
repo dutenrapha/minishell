@@ -1,44 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lsh_loop.c                                         :+:      :+:    :+:   */
+/*   lsh_env.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/07 21:00:48 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/08/29 19:55:01 by aalcara-         ###   ########.fr       */
+/*   Created: 2021/08/28 14:47:03 by aalcara-          #+#    #+#             */
+/*   Updated: 2021/08/29 20:00:00 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/header.h"
 
-void	free_array(char **array)
+int	lsh_env(char **args)
 {
-	int	i;
+	char	**env_array;
+	int		i;
 
+	if (args[0] == NULL)
+		args[0] = args[0];
+	env_array = hashtable_to_array(g_minishell.env);
 	i = 0;
-	while (array[i])
+	while (env_array[i])
 	{
-		free(array[i]);
+		ft_putstr_fd(env_array[i], 1);
+		ft_putstr_fd("\n", 1);
+		free(env_array[i]);
 		i++;
 	}
-	free(array);
-}
-
-void	lsh_loop(void)
-{
-	char	*line;
-	char	**args;
-	int		status;
-
-	status = 1;
-	while (status)
-	{
-		ft_printf("> ");
-		line = lsh_read_line();
-		args = ft_split(line, LSH_TOK_DELIM);
-		status = lsh_execute(args);
-		free(line);
-		free_array(args);
-	}
+	free(env_array);
+	return (1);
 }

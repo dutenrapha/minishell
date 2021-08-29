@@ -1,44 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lsh_loop.c                                         :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/07 21:00:48 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/08/29 19:55:01 by aalcara-         ###   ########.fr       */
+/*   Created: 2021/02/09 19:51:37 by aalcara-          #+#    #+#             */
+/*   Updated: 2021/08/28 14:18:54 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/header.h"
+#include "libft.h"
 
-void	free_array(char **array)
+size_t	ft_strcpy(char *dst, const char *src)
 {
-	int	i;
+	unsigned int		i;
+	char				temp;
 
+	if (src == NULL)
+		return (0);
 	i = 0;
-	while (array[i])
+	temp = src[i];
+	while (temp != '\0')
 	{
-		free(array[i]);
+		dst[i] = temp;
 		i++;
+		temp = src[i];
 	}
-	free(array);
+	dst[i] = '\0';
+	return (ft_strlen(src));
 }
 
-void	lsh_loop(void)
-{
-	char	*line;
-	char	**args;
-	int		status;
-
-	status = 1;
-	while (status)
-	{
-		ft_printf("> ");
-		line = lsh_read_line();
-		args = ft_split(line, LSH_TOK_DELIM);
-		status = lsh_execute(args);
-		free(line);
-		free_array(args);
-	}
-}
