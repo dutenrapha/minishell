@@ -1,44 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lsh_loop.c                                         :+:      :+:    :+:   */
+/*   hashtable_free.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/07 21:00:48 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/08/29 19:55:01 by aalcara-         ###   ########.fr       */
+/*   Created: 2021/08/27 21:28:18 by aalcara-          #+#    #+#             */
+/*   Updated: 2021/08/28 14:39:25 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/header.h"
 
-void	free_array(char **array)
+void	free_item(t_ht_item *item)
 {
-	int	i;
-
-	i = 0;
-	while (array[i])
-	{
-		free(array[i]);
-		i++;
-	}
-	free(array);
+	free(item->key);
+	free(item->value);
+	free(item);
 }
 
-void	lsh_loop(void)
+void	free_all_itens(t_ht_item *item)
 {
-	char	*line;
-	char	**args;
-	int		status;
+	if (item->next)
+		free_all_itens(item->next);
+	free_item(item);
+}
 
-	status = 1;
-	while (status)
+void	free_table(t_hashtable *table)
+{
+	t_ht_item	*item;
+	int			i;
+
+	i = 0;
+	while (i < table->size)
 	{
-		ft_printf("> ");
-		line = lsh_read_line();
-		args = ft_split(line, LSH_TOK_DELIM);
-		status = lsh_execute(args);
-		free(line);
-		free_array(args);
+		item = table->items[i];
+		i++;
+		if (item != NULL)
+		{
+			free_all_itens(item);
+		}
 	}
+	free(table->items);
+	free(table);
 }

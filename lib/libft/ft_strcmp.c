@@ -1,44 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lsh_loop.c                                         :+:      :+:    :+:   */
+/*   hashtable_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/07 21:00:48 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/08/29 19:55:01 by aalcara-         ###   ########.fr       */
+/*   Created: 2021/08/27 21:02:46 by aalcara-          #+#    #+#             */
+/*   Updated: 2021/08/28 14:20:08 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/header.h"
+#include "libft.h"
 
-void	free_array(char **array)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	int	i;
+	unsigned int	i;
+	int				calc;
 
 	i = 0;
-	while (array[i])
+	if ((!s1 && s2) || (s1 && !s2))
+		return (1);
+	if (!s1 && !s2)
+		return (0);
+	while (s1[i] && s2[i])
 	{
-		free(array[i]);
+		calc = ((*(unsigned char *)(s1 + i)) - (*(unsigned char *)(s2 + i)));
+		if (calc != 0)
+			return (calc);
 		i++;
 	}
-	free(array);
-}
-
-void	lsh_loop(void)
-{
-	char	*line;
-	char	**args;
-	int		status;
-
-	status = 1;
-	while (status)
-	{
-		ft_printf("> ");
-		line = lsh_read_line();
-		args = ft_split(line, LSH_TOK_DELIM);
-		status = lsh_execute(args);
-		free(line);
-		free_array(args);
-	}
+	calc = ((*(unsigned char *)(s1 + i)) - (*(unsigned char *)(s2 + i)));
+	return (calc);
 }

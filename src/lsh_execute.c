@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lsh_execute.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 22:58:36 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/05/11 20:29:37 by rdutenke         ###   ########.fr       */
+/*   Updated: 2021/08/28 17:39:32 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@ int	lsh_execute(char **args)
 	builtin_str[0] = "m_cd";
 	builtin_str[1] = "m_exit";
 	builtin_str[2] = "m_pwd";
+	builtin_str[3] = "m_env";
 	builtin_func[0] = &lsh_cd;
 	builtin_func[1] = &lsh_exit;
 	builtin_func[2] = &lsh_pwd;
+	builtin_func[3] = &lsh_env;
 	if (args[0] == NULL)
 		return (1);
 	i = 0;

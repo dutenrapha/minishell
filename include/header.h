@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 21:20:32 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/05/11 18:35:45 by rdutenke         ###   ########.fr       */
+/*   Updated: 2021/08/28 17:44:00 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HEADER_H
 #define LSH_RL_BUFSIZE 1024
-#define LSH_NUM_BUILTINS 3
+#define LSH_NUM_BUILTINS 4
 #define LSH_TOK_DELIM ' '
 # include <stdlib.h>
 # include <stdio.h>
@@ -21,6 +21,7 @@
 # include <unistd.h>
 # include <sys/wait.h>
 # include "../lib/libft/libft.h"
+# include "hashtable.h"
 
 typedef struct s_read
 {
@@ -29,6 +30,17 @@ typedef struct s_read
 	char	*buffer;
 	int		c;
 }						t_read;
+
+typedef struct s_minishell
+{
+	t_hashtable	*env;
+}				t_minishell;
+
+/*
+** GLOBAL VARIABLE
+*/
+
+t_minishell	g_minishell;
 
 void	lsh_loop(void);
 int		ft_getchar(void);
@@ -39,4 +51,6 @@ int		lsh_exit(char **args);
 int		lsh_pwd(char **args);
 int		lsh_execute(char **args);
 int		lsh_launch(char **args);
+int		lsh_env(char **args);
+t_hashtable	*env_to_hashtable(char **env);
 #endif
