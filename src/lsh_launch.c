@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 21:13:17 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/05/11 16:02:49 by rdutenke         ###   ########.fr       */
+/*   Updated: 2021/09/02 16:20:35 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	lsh_launch(char **args)
 	{
 		wpid = waitpid(pid, &status, WUNTRACED);
 		if (wpid == 0)
-			wpid = wpid;
+			wpid = (pid_t)wpid;
 		while (!WIFEXITED(status) && !WIFSIGNALED(status))
 		{
 			wpid = waitpid(pid, &status, WUNTRACED);

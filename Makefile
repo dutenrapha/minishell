@@ -4,7 +4,7 @@ LIB_PATH = ./lib
 LIB_TESTS = ./tests
 LIBFT_PATH = ./lib/libft
 
-CC = gcc
+CC = clang
 FLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 LIB_NAME = minishaell.a
 LIBFT_NAME = libft.a
@@ -37,15 +37,18 @@ fclean:	clean
 re: fclean all run
 
 config:
-	@$(CC) $(FLAGS) $(LIB_TESTS)/$(TESTS_SRC) -o $(LIB_TESTS)/$(TESTS_NAME)
+	$(CC) $(FLAGS) -L. -lreadline $(LIB_TESTS)/$(TESTS_SRC) -o $(LIB_TESTS)/$(TESTS_NAME)
 	@mkdir obj
 
 run:
 	@clear
 	@./$(NAME)
 
+install:
+	sudo apt-get install libreadline-dev
+
 $(NAME):	$(LIBFT) $(LIB)
-	@$(CC) $(FLAGS) $(MAIN) -g $(LIB) $(LIBFT) -o $@
+	@$(CC) $(FLAGS) -L. -lreadline $(MAIN) -g $(LIB) $(LIBFT) -o $@
 
 $(LIB): $(OBJ)
 	@ar rcs $@ $(OBJ)
