@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 21:20:32 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/09/02 15:59:50 by rdutenke         ###   ########.fr       */
+/*   Updated: 2021/09/04 15:07:48 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <sys/wait.h>
 # include "../lib/libft/libft.h"
 # include "hashtable.h"
+# include "tokenizer.h"
 #include <readline/readline.h>
 #include <readline/history.h>
 

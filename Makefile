@@ -38,7 +38,7 @@ re: fclean all run
 
 config:
 	$(CC) $(FLAGS) -L. -lreadline $(LIB_TESTS)/$(TESTS_SRC) -o $(LIB_TESTS)/$(TESTS_NAME)
-	@mkdir obj
+	@mkdir -p obj
 
 run:
 	@clear
