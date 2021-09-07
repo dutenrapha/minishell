@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 21:13:17 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/09/02 16:20:35 by rdutenke         ###   ########.fr       */
+/*   Updated: 2021/09/07 18:09:13 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	lsh_launch(char **args)
 	int		status;
 
 	pid = fork();
+	exec_signals();
 	if (pid == 0)
 	{
 		if (execvp(args[0], args) == -1)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 21:00:40 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/08/28 20:20:19 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/07 17:58:29 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	main(void)
 {
 	g_minishell.env = env_to_hashtable(__environ);
+	g_minishell.erro = 0;
 	lsh_loop();
 	return EXIT_SUCCESS;
 }
