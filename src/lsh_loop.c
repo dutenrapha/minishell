@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 21:00:48 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/09/07 18:08:09 by rdutenke         ###   ########.fr       */
+/*   Updated: 2021/09/11 22:14:29 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,11 @@ void	lsh_loop(void)
 		line = readline("T-RexShell$ 🦖$ ");
 		add_history(line);
 		args = ft_split(line, LSH_TOK_DELIM);
+		if (args == NULL)
+		{
+			ft_printf("exit\n");
+			return ;
+		}
 		status = lsh_execute(args);
 		free(line);
 		free_array(args);
