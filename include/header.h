@@ -6,7 +6,7 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 21:20:32 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/09/12 13:39:20 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/12 14:41:28 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,14 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <error.h>
-# include <unistd.h>
 # include <sys/wait.h>
 # include "../lib/libft/libft.h"
 # include "hashtable.h"
 # include "tokenizer.h"
-#include <readline/readline.h>
-#include <readline/history.h>
+# include <readline/readline.h>
+# include <readline/history.h>
+# include <signal.h>
+
 
 typedef struct s_read
 {
@@ -38,6 +39,7 @@ typedef struct s_read
 typedef struct s_minishell
 {
 	t_hashtable	*env;
+	int			erro;
 }				t_minishell;
 
 /*
@@ -57,4 +59,6 @@ int		lsh_execute(char **args);
 int		lsh_launch(char **args);
 int		lsh_env(char **args);
 t_hashtable	*env_to_hashtable(char **env);
+void	loop_signals(void);
+void	exec_signals(void);
 #endif
