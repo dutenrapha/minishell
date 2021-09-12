@@ -6,11 +6,12 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 21:20:32 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/09/04 15:07:48 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/12 13:39:20 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HEADER_H
+#define HEADER_H
 #define LSH_RL_BUFSIZE 1024
 #define LSH_NUM_BUILTINS 4
 #define LSH_TOK_DELIM ' '

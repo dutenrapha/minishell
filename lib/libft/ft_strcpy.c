@@ -6,7 +6,7 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 19:51:37 by aalcara-          #+#    #+#             */
-/*   Updated: 2021/08/28 14:18:54 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/12 13:26:01 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,3 @@ size_t	ft_strcpy(char *dst, const char *src)
 	dst[i] = '\0';
 	return (ft_strlen(src));
 }
-

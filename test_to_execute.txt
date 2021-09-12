@@ -5,3 +5,5 @@ echo ""
 echo $TEST (com uma variável válida)
 echo $TEST2 (com uma variável não setada)
 echo "abcd"12345"test"
+echo "$USER"
+echo "$USER a"
