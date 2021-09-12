@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   token_free.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/09 19:51:37 by aalcara-          #+#    #+#             */
-/*   Updated: 2021/09/12 13:26:01 by aalcara-         ###   ########.fr       */
+/*   Created: 2021/09/12 10:45:12 by aalcara-          #+#    #+#             */
+/*   Updated: 2021/09/12 11:14:50 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/header.h"
 
-size_t	ft_strcpy(char *dst, const char *src)
+void	free_tokens(t_token **tokens)
 {
-	unsigned int		i;
-	char				temp;
-
-	if (src == NULL)
-		return (0);
-	i = 0;
-	temp = src[i];
-	while (temp != '\0')
-	{
-		dst[i] = temp;
-		i++;
-		temp = src[i];
-	}
-	dst[i] = '\0';
-	return (ft_strlen(src));
+	if (!(*tokens))
+		return ;
+	if ((*tokens)->next)
+		free_tokens(&(*tokens)->next);
+	free((*tokens)->value);
+	free(*tokens);
+	*tokens = NULL;
 }

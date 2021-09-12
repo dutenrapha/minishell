@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lsh_loop.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 21:00:48 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/09/11 22:14:29 by rdutenke         ###   ########.fr       */
+/*   Updated: 2021/09/12 14:41:03 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@ void	free_array(char **array)
 void	lsh_loop(void)
 {
 	char	*line;
-	char	**args;
 	int		status;
+	t_token	*tokens;
+	// char	**args;
 
 	status = 1;
 	while (status)
@@ -37,14 +38,19 @@ void	lsh_loop(void)
 		loop_signals();
 		line = readline("T-RexShell$ 🦖$ ");
 		add_history(line);
-		args = ft_split(line, LSH_TOK_DELIM);
-		if (args == NULL)
-		{
-			ft_printf("exit\n");
-			return ;
-		}
-		status = lsh_execute(args);
+		tokens = tokenizer(line);
+
+		// if (args == NULL)
+		// {
+		// 	ft_printf("exit\n");
+		// 	return ;
+		// }
 		free(line);
-		free_array(args);
+		parse_tokens(tokens);
+		free_tokens(&tokens);
+
+		// args = ft_split(line, LSH_TOK_DELIM); // ! trocar por tokenizer ------------
+		// status = lsh_execute(args);
+		// free_array(args);
 	}
 }

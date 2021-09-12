@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 21:20:32 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/09/07 18:09:47 by rdutenke         ###   ########.fr       */
+/*   Updated: 2021/09/12 14:41:28 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HEADER_H
+#define HEADER_H
 #define LSH_RL_BUFSIZE 1024
 #define LSH_NUM_BUILTINS 4
 #define LSH_TOK_DELIM ' '
@@ -21,6 +22,7 @@
 # include <sys/wait.h>
 # include "../lib/libft/libft.h"
 # include "hashtable.h"
+# include "tokenizer.h"
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <signal.h>
