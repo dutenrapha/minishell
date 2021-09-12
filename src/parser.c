@@ -6,7 +6,7 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 22:07:36 by aalcara-          #+#    #+#             */
-/*   Updated: 2021/09/12 10:12:13 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/12 10:43:00 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	create_pipe(t_token *pipe_token, int *last_pipe_in)
 	close(new_pipe[0]);
 }
 
-free_command(char **array)
+void	free_command(char **array)
 {
 	int i;
 
@@ -106,19 +106,22 @@ void	command_parser(t_token *tokens, t_token *pipe, int *last_pipe_in)
 	create_pipe(pipe, last_pipe_in);
 	// check_redirects;// TODO
 	command = create_command_array(tokens, pipe);
+	//!remover
+	// int i = 0;
+	// printf("\n");
+	// while (command[i])
+	// {
+	// 	printf("%s\n", command[i]);
+	// 	i++;
+	// }
+	// !até aqui
+
+	
 	lsh_execute(command);
 	free_command(command);
 	restore_std_fd(save_std_fd);
 	
 
-	//!remover
-	int i = 0;
-	printf("\n");
-	while (command[i])
-	{
-		printf("%s\n", command[i]);
-		i++;
-	}
 }
 
 
@@ -154,6 +157,6 @@ void	parse_tokens(t_token *tokens)
 	last_pipe_in = 0;
 	check_pipe(tokens, &last_pipe_in);
 	if (last_pipe_in != 0)
-		close(last_pipe_in); 
+		close(last_pipe_in);
 
 }

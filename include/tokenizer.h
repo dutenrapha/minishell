@@ -6,7 +6,7 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 15:02:27 by aalcara-          #+#    #+#             */
-/*   Updated: 2021/09/12 09:56:09 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/12 10:51:08 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,10 @@ typedef struct s_tokendata
 	char 		buffer[1000];
 }t_tokendata;
 
+void	free_tokens(t_token **tokens);
 t_token	*tokenizer(char *input);//
+
+
 void	parse_tokens(t_token *tokens);
 
 #endif
