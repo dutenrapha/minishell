@@ -6,7 +6,7 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 21:00:48 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/09/04 15:06:41 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/12 10:01:02 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,17 @@ void	lsh_loop(void)
 	char	*line;
 	char	**args;
 	int		status;
+	t_token	*tokens;
 
 	status = 1;
 	while (status)
 	{
 		line = readline("T-RexShell$ 🦖$ ");
 		add_history(line);
-		tokenizer(line);
+		tokens = tokenizer(line);
+		parse_tokens(tokens);
 		args = ft_split(line, LSH_TOK_DELIM); // ! trocar por tokenizer ------------
-		status = lsh_execute(args);
+		// status = lsh_execute(args);
 		free(line);
 		free_array(args);
 	}

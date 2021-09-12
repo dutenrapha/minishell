@@ -6,7 +6,7 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 19:33:05 by aalcara-          #+#    #+#             */
-/*   Updated: 2021/09/06 16:03:10 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/12 10:14:57 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,9 @@ int	lex_dquote(char *str, char **dest)
 	{
 		i++;
 	}
-	// printf("dest = %s, str = %s, i = %i\n", *dest, str, i);// !remover
 	if (i > 1)
 		*dest = ft_strljoinrealloc(*dest, str, i);
-	if (str[i] == '$')
+	if (str[i] == '$')//TODO verificar funcinamento
 	{
 		aux = expand_word(str + i);
 		ft_strlcat(*dest, aux, ft_strlen(aux));
@@ -109,7 +108,6 @@ void	handle_word_token(t_token *token)
 	ft_bzero(token->value, ft_strlen(token->value));
 	while (temp[i] != C_NULL)
 	{
-		// printf("char = %c\n", temp[i]);// !excluir
 		if (temp[i] == D_QUOTE && check_is_closed((temp + i), D_QUOTE))
 			i += lex_dquote((temp + i + 1), &token->value);
 		else if (temp[i] == S_QUOTE && check_is_closed((temp + i), S_QUOTE))
@@ -145,10 +143,9 @@ void	lexer(t_token *token)
 	else if (special_token(token, "<<"))
 		token->type = T_HERE_DOC;
 	else if (special_token(token, "|"))
-		token->type = T_HERE_DOC;
+		token->type = T_PIPE;
 	else
 		handle_word_token(token);
-	// printf("token->type = %d, value = [%s]\n\n", token->type, token->value);//!remover
 }
 
 void	push_token(t_token **tokens, t_token *new)
@@ -170,7 +167,6 @@ void	get_token(t_tokendata *tk, t_token **tokens)
 {
 	t_token	*token;
 
-	// printf("tk->i = %ld\ntk->buffer: [%s]\n", tk->i, tk->buffer); //!remover
 	token = malloc(sizeof(*token));
 	if (!tk->j || !token)
 		return ;
@@ -231,22 +227,6 @@ void	tokenize_general(t_tokendata *tk, t_token **tokens)
 
 }
 
-void	print_tokens(t_token **tokens)
-{
-	t_token	*aux;
-	int		i;
-
-	i = 0;
-	aux = *tokens;
-	printf("\n");
-	while (aux)
-	{
-		printf("token %d: %s\n", i, aux->value);
-		i++;
-		aux = aux->next;
-	}
-}
-
 t_token	*tokenizer(char *input)
 {
 	t_token		*tokens;
@@ -257,7 +237,6 @@ t_token	*tokenizer(char *input)
 	tk->input = input;
 	while (tk->input[tk->i])
 	{
-		// printf("input[%ld] = %c, state = %d\n", tk->i, tk->input[tk->i], tk->state);
 		if (tk->state == S_GENERAL)
 			tokenize_general(tk, &tokens);
 		else if (tk->state == S_DQUOTE)
@@ -269,6 +248,5 @@ t_token	*tokenizer(char *input)
 		tk->i++;
 	}
 	free(tk);
-	print_tokens(&tokens);//!apenas teste
 	return (tokens);
 }
