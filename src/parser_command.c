@@ -6,7 +6,7 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 22:07:36 by aalcara-          #+#    #+#             */
-/*   Updated: 2021/09/12 13:46:46 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/12 14:37:43 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,13 @@ void	command_parser(t_token *tokens, t_token *pipe, int *last_pipe_in)
 	// check_redirects;// TODO
 	command = create_command_array(tokens, pipe);
 	//!remover
-	int i = 0;
-	printf("\n");
-	while (command[i])
-	{
-		printf("%s\n", command[i]);
-		i++;
-	}
+	// int i = 0;
+	// printf("\n");
+	// while (command[i])
+	// {
+	// 	printf("%s\n", command[i]);
+	// 	i++;
+	// }
 	// !até aqui
 	lsh_execute(command);
 	free_command(command);
