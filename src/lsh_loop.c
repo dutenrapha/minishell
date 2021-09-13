@@ -6,7 +6,7 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 21:00:48 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/09/12 14:41:03 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/13 14:35:27 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,5 @@ void	lsh_loop(void)
 		free(line);
 		parse_tokens(tokens);
 		free_tokens(&tokens);
-
-		// args = ft_split(line, LSH_TOK_DELIM); // ! trocar por tokenizer ------------
-		// status = lsh_execute(args);
-		// free_array(args);
 	}
 }
