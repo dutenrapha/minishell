@@ -6,7 +6,7 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 21:00:48 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/09/13 14:35:27 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/13 15:07:41 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,20 @@ void	free_array(char **array)
 	free(array);
 }
 
+void	print_tokens(t_token *tokens)
+{
+	t_token *aux;
+
+	aux = tokens;
+	printf("\n\n========= tokens ==========\n");
+	while (aux)
+	{
+		printf("[type = %d]  [%s]\n", aux->type, aux->value);
+		aux = aux->next;
+	}
+	printf("===========================\n\n\n");
+}
+
 void	lsh_loop(void)
 {
 	char	*line;
@@ -39,6 +53,7 @@ void	lsh_loop(void)
 		line = readline("T-RexShell$ 🦖$ ");
 		add_history(line);
 		tokens = tokenizer(line);
+		print_tokens(tokens);// apagar
 
 		// if (args == NULL)
 		// {

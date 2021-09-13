@@ -6,7 +6,7 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 22:58:36 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/09/13 14:20:45 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/13 16:07:30 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,13 @@ int	lsh_execute(char **args)
 	builtin_str[2] = "m_pwd";
 	builtin_str[3] = "m_env";
 	builtin_str[4] = "m_set";
+	builtin_str[5] = "m_export";
 	builtin_func[0] = &lsh_cd;
 	builtin_func[1] = &lsh_exit;
 	builtin_func[2] = &lsh_pwd;
 	builtin_func[3] = &lsh_env;
 	builtin_func[4] = &lsh_set;
+	builtin_func[5] = &lsh_export;
 	if (args[0] == NULL)
 		return (1);
 	i = 0;

@@ -6,13 +6,13 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 19:33:05 by aalcara-          #+#    #+#             */
-/*   Updated: 2021/09/12 13:48:08 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/13 16:27:03 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/header.h"
 
-char	*expand_word(char *key, int len)
+char	*expand_word(char *key, int len)// TODO falta fazer a explansao de variável se ela não existir no ENV
 {
 	char	*aux;
 	char	*realkey;

@@ -6,7 +6,7 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 19:33:05 by aalcara-          #+#    #+#             */
-/*   Updated: 2021/09/12 13:28:48 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/13 15:19:36 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int	lex_squote(char *str, char **dest)
 	i = 0;
 	while (str[i] != S_QUOTE)
 		i++;
-	if (i > 1)
+	if (i >= 1)
 		*dest = ft_strjoinrealloc(*dest, str, i);
 	return (i + 1);
 }
