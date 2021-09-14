@@ -6,7 +6,7 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 22:58:36 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/09/13 16:07:30 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/14 10:40:51 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,23 @@
 static bool	check_is_local_var(char **args)
 {
 	char	*aux;
+	int		i;
 	bool	have_equal;
 	bool	have_space;
 
+	i = 0;
 	aux = args[0];
 	have_equal = FALSE;
 	have_space = FALSE;
-	if (ft_strchr(aux, '='))
-		have_equal = TRUE;
-	if (ft_strchr(aux, SPACE))
-		have_space = TRUE;
-	if (have_equal && !have_space)
-		return (TRUE);
-	return (FALSE);
+	if (!ft_strchr(aux, '='))
+		return (FALSE);
+	while (aux[i] != '=')
+	{
+		if (aux[i] == SPACE || aux[i] == '?')
+			return (FALSE);
+		i++;
+	}
+	return (TRUE);
 }
 
 int	lsh_execute(char **args)
