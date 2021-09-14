@@ -6,7 +6,7 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 15:02:27 by aalcara-          #+#    #+#             */
-/*   Updated: 2021/09/14 11:34:51 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/14 18:07:40 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,5 @@ bool	special_token(t_token *token, const char *str);
 void	parse_tokens(t_token *tokens);
 void	command_parser(t_token *tokens, t_token *pipe, int *last_pipe_in);
 char	**create_command_array(t_token *start, t_token *pipe);
+void	check_redirects(t_token *current, t_token *end, int *save_std_fd);
 #endif

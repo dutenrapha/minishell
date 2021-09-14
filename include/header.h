@@ -6,7 +6,7 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 21:20:32 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/09/14 12:02:22 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/14 18:08:32 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <signal.h>
+# include <errno.h>
 
 
 typedef struct s_read
@@ -68,4 +69,6 @@ void	set_local_var(char **args);
 int		lsh_set(char **args);
 int		lsh_export(char **args);
 int	lsh_unset(char **args);
+
+void	error_return(char * input, char *error_message, int status);
 #endif
