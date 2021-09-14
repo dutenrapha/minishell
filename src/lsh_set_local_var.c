@@ -6,7 +6,7 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 12:30:57 by aalcara-          #+#    #+#             */
-/*   Updated: 2021/09/13 15:28:50 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/14 00:49:04 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void	set_local_var(char **args)
 	key = find_key(args[0]);
 	value = find_value(args[0]);
 	ht_insert(g_minishell.local_var, key, value);
+	if (ht_bool_search(g_minishell.env, key))
+		ht_insert(g_minishell.env, key, value);
 	free(key);
 	free(value);
 }

@@ -6,7 +6,7 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 21:04:09 by aalcara-          #+#    #+#             */
-/*   Updated: 2021/08/29 17:42:27 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/14 00:42:23 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define HASHTABLE_H
 
 # include <stdlib.h>
+# define TRUE 1
+# define false 0
 
 typedef struct s_ht_item
 {
@@ -35,6 +37,7 @@ char		**hashtable_to_array(t_hashtable *table);
 void		ht_insert(t_hashtable *table, char *key, char *value);
 // search
 char		*ht_search(t_hashtable *table, char *key);
+int		ht_bool_search(t_hashtable *table, char *key);
 // delete
 void		ht_delete(t_hashtable *table, char *key);
 // create

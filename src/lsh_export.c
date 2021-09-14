@@ -6,7 +6,7 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 14:39:23 by aalcara-          #+#    #+#             */
-/*   Updated: 2021/09/13 16:31:40 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/14 00:46:38 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,12 @@ int	lsh_export(char **args) // TODO corrigir. Quando existente em local, deve ap
 	i = 1;
 	while (args[i])
 	{
-		if(ft_strchr(args[i], '='))
+		if (ft_strchr(args[i], '=') && !(ft_strchr(key, SPACE)))
 		{
 			key = find_key(args[i]);
 			value = find_value(args[i]);
+			if (ht_bool_search(g_minishell.local_var, key) == 1)
+				ht_insert(g_minishell.local_var, key, value);
 		}
 		else
 		{
