@@ -13,3 +13,6 @@ echo $USERTEST
 echo $?TEST
 echo "$USERTEST"
 echo "$?TEST"
+
+export VARIAVEL (variavel inexistente nas local_var)
+export VARIAVEL (variável existente nas local_var)

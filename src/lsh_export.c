@@ -6,7 +6,7 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 14:39:23 by aalcara-          #+#    #+#             */
-/*   Updated: 2021/09/14 10:38:14 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/14 12:37:45 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,21 @@ static int	ret_error(char *key, char *value)
 	return (1);
 }
 
+static int	get_key_and_value(char *str, char **key, char **value)
+{
+	char	*aux;
+
+	*key = ft_strdup(str);
+	aux = ht_search(g_minishell.local_var, *key);
+	if (!(aux))
+	{
+		free(*key);
+		return (1);
+	}
+	*value = ft_strdup(aux);
+	return (0);
+}
+
 int	lsh_export(char **args)
 {
 	int		i;
@@ -60,10 +75,8 @@ int	lsh_export(char **args)
 			value = find_value(args[i]);
 		}
 		else
-		{
-			key = ft_strdup(args[i]);
-			value = ft_strdup(ht_search(g_minishell.local_var, key));
-		}
+			if (get_key_and_value(args[i], &key, &value) == 1)
+				return (0);
 		if (ft_strchr(key, SPACE) || ft_strchr(key, '?'))
 			return (ret_error(key, value));
 		ht_insert(g_minishell.local_var, key, value);

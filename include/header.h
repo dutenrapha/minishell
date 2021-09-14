@@ -6,14 +6,14 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 21:20:32 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/09/13 16:08:07 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/14 12:02:22 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HEADER_H
 #define HEADER_H
 #define LSH_RL_BUFSIZE 1024
-#define LSH_NUM_BUILTINS 6
+#define LSH_NUM_BUILTINS 7
 #define LSH_TOK_DELIM ' '
 # define LOCAL_HASHTABLE_SIZE 50
 # include <stdlib.h>
@@ -67,4 +67,5 @@ void	exec_signals(void);
 void	set_local_var(char **args);
 int		lsh_set(char **args);
 int		lsh_export(char **args);
+int	lsh_unset(char **args);
 #endif
