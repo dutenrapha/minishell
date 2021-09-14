@@ -6,7 +6,7 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 12:30:57 by aalcara-          #+#    #+#             */
-/*   Updated: 2021/09/14 00:49:04 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/14 08:51:11 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,9 @@ static char	*find_value(char *str)
 
 void	set_local_var(char **args)
 {
-	char *key;
-	char *value;
+	char	*key;
+	char	*value;
+
 	if (args[1])
 	{
 		return ;
