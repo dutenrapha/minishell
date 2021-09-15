@@ -6,7 +6,7 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 22:07:36 by aalcara-          #+#    #+#             */
-/*   Updated: 2021/09/14 18:13:36 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/15 10:41:49 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ void	check_redirects(t_token *current, t_token *end, int *save_std_fd)
 			redirect_input(current->next->value, O_RDONLY | O_CREAT);
 		else if (current->type == T_OAPPEND && current->next->type == T_WORD)
 			redirect_output(current->next->value, O_WRONLY | O_CREAT | O_APPEND);
-		// else if (current->type == T_HERE_DOC && current->next->type == T_WORD)
-		// 	here_doc_input(current->next->value, save_std_fd);
+		else if (current->type == T_HERE_DOC && current->next->type == T_WORD)
+			here_doc_input(current->next->value, save_std_fd);
 		current = current->next;
 	}
 }
