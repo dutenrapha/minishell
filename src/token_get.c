@@ -6,7 +6,7 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 19:33:05 by aalcara-          #+#    #+#             */
-/*   Updated: 2021/09/15 12:55:52 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/15 13:56:22 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,12 @@ void	get_token(t_tokendata *tk, t_token **tokens)
 	if (!tk->j)
 		return ;
 	token = malloc(sizeof(*token));
-	printf("tk = [type = %d]  [%s]\n", tk->type, tk->buffer);//
 	if (!token)
 		return ;
 	ft_bzero(token, sizeof(*token));
 	token->value = ft_strdup(tk->buffer);
 	token->type = tk->type;
 	token->next = NULL;
-	printf("token = [type = %d]  [%s]\n\n\n", token->type, token->value);//
 	lexer(token);
 	push_token(tokens, token);
 	ft_bzero(tk->buffer, tk->j);

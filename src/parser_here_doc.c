@@ -6,7 +6,7 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 10:36:49 by aalcara-          #+#    #+#             */
-/*   Updated: 2021/09/15 12:38:22 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/15 16:56:42 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void	clear_tmp_file_input(void)
 {
 	int		tmp_fd;
 
-	tmp_fd = open(TMP_FILE, O_WRONLY | O_TRUNC, 0600);
+	tmp_fd = open(TMP_FILE, O_WRONLY | O_TRUNC, 0777);
 	close(tmp_fd);
 }
 

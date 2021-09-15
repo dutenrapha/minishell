@@ -6,7 +6,7 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 21:00:48 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/09/14 15:42:10 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/15 13:54:07 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ void	print_tokens(t_token *tokens) //!REMOVER
 	t_token	*aux;
 
 	aux = tokens;
-	printf("\n\n========= tokens ==========\n");
+	printf("\n========= tokens ==========\n");
 	while (aux)
 	{
 		printf("[type = %d]  [%s]\n", aux->type, aux->value);
 		aux = aux->next;
 	}
-	printf("===========================\n\n\n");
+	printf("===========================\n\n");
 }
 
 void	lsh_loop(void)

@@ -6,13 +6,13 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 17:47:31 by aalcara-          #+#    #+#             */
-/*   Updated: 2021/09/14 18:04:05 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/15 13:57:59 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/header.h"
 
-void	error_return(char * input, char *error_message, int status)
+void	error_return(char *input, char *error_message, int status)
 {
 	char	*output;
 	int		len;
