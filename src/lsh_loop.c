@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lsh_loop.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 21:00:48 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/09/16 17:15:09 by rdutenke         ###   ########.fr       */
+/*   Updated: 2021/09/16 14:16:54 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,6 @@ void	free_array(char **array)
 		i++;
 	}
 	free(array);
-}
-
-void	print_tokens(t_token *tokens) //!REMOVER
-{
-	t_token	*aux;
-
-	aux = tokens;
-	printf("\n========= tokens ==========\n");
-	while (aux)
-	{
-		printf("[type = %d]  [%s]\n", aux->type, aux->value);
-		aux = aux->next;
-	}
-	printf("===========================\n\n");
 }
 
 void	lsh_loop(void)

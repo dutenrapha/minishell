@@ -6,12 +6,12 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 15:02:27 by aalcara-          #+#    #+#             */
-/*   Updated: 2021/09/15 12:27:19 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/16 14:15:57 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TOKENIZER_H
-#define TOKENIZER_H
+# define TOKENIZER_H
 # include <unistd.h>
 # include <stdbool.h>
 
@@ -30,7 +30,7 @@ typedef enum e_state
 	S_GENERAL,
 	S_SQUOTE,
 	S_DQUOTE
-} t_state;
+}	t_state;
 
 typedef enum e_type
 {
@@ -41,14 +41,14 @@ typedef enum e_type
 	T_OREDIRECT,
 	T_HERE_DOC,
 	T_OAPPEND
-}t_type;
+}	t_type;
 
 typedef struct s_token
 {
 	int				type;
 	char			*value;
 	struct s_token	*next;
-}t_token;
+}					t_token;
 
 typedef struct s_tokendata
 {
@@ -58,7 +58,7 @@ typedef struct s_tokendata
 	t_state		state;
 	t_type		type;
 	char 		buffer[1000];
-}t_tokendata;
+}				t_tokendata;
 
 t_token	*tokenizer(char *input);
 void	get_token(t_tokendata *tk, t_token **tokens);
