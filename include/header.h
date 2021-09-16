@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 21:20:32 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/09/12 14:41:28 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/16 16:34:05 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #define LSH_RL_BUFSIZE 1024
 #define LSH_NUM_BUILTINS 4
 #define LSH_TOK_DELIM ' '
+#define NOT_FOUND "command not found."
+#define NO_FILE_OR_DIR "no such file or directory."
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
@@ -26,6 +28,8 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <signal.h>
+# include <sys/stat.h>
+# include <sys/types.h>
 
 
 typedef struct s_read
@@ -61,4 +65,6 @@ int		lsh_env(char **args);
 t_hashtable	*env_to_hashtable(char **env);
 void	loop_signals(void);
 void	exec_signals(void);
+char	*get_absolute_path(char *cmd, char *path_variable);
+void	free_2d_array(char **ptr);
 #endif

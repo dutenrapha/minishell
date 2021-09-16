@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lsh_loop.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 21:00:48 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/09/12 14:41:03 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/14 00:14:58 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,15 @@ void	lsh_loop(void)
 	{
 		loop_signals();
 		line = readline("T-RexShell$ 🦖$ ");
+		if (line == NULL)
+		{
+			ft_printf("exit\n");
+			return ;
+		}
 		add_history(line);
 		tokens = tokenizer(line);
 
-		// if (args == NULL)
-		// {
-		// 	ft_printf("exit\n");
-		// 	return ;
-		// }
+
 		free(line);
 		parse_tokens(tokens);
 		free_tokens(&tokens);
