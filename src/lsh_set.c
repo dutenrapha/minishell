@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   lsh_set.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/07 21:00:40 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/09/13 12:44:20 by aalcara-         ###   ########.fr       */
+/*   Created: 2021/09/13 14:18:31 by aalcara-          #+#    #+#             */
+/*   Updated: 2021/09/13 14:22:45 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/header.h"
+#include "../include/header.h"
 
-int	main(void)
+int	lsh_set(char **args)
 {
-	g_minishell.env = env_to_hashtable(__environ);
-	g_minishell.erro = 0;
-	g_minishell.local_var = create_table(LOCAL_HASHTABLE_SIZE);
-	lsh_loop();
-	return EXIT_SUCCESS;
+	char	**array;
+	int		i;
+
+	if (args[0] == NULL)
+		args[0] = args[0];
+	array = hashtable_to_array(g_minishell.local_var);
+	i = 0;
+	while (array[i])
+	{
+		ft_putstr_fd(array[i], 1);
+		ft_putstr_fd("\n", 1);
+		free(array[i]);
+		i++;
+	}
+	free(array);
+	return (1);
 }

@@ -6,4 +6,13 @@ echo $TEST (com uma variável válida)
 echo $TEST2 (com uma variável não setada)
 echo "abcd"12345"test"
 echo "$USER"
+echo "$TEST2" (com uma variável não setada)
 echo "$USER a"
+
+echo $USERTEST
+echo $?TEST
+echo "$USERTEST"
+echo "$?TEST"
+
+export VARIAVEL (variavel inexistente nas local_var)
+export VARIAVEL (variável existente nas local_var)

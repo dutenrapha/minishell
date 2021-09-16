@@ -6,7 +6,7 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 22:07:36 by aalcara-          #+#    #+#             */
-/*   Updated: 2021/09/12 13:45:23 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/14 19:00:47 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,9 @@ static int	get_length(t_token *start, t_token *end)
 	int	i;
 
 	i = 0;
-	while (start != end)
+	while (start != end && start->type == T_WORD)
 	{
-		if (start->type == T_WORD)
-			i++;
+		i++;
 		start = start->next;
 	}
 	return (i);
@@ -31,13 +30,10 @@ static char	**fill_array(t_token *start, t_token *end, char **command)
 	int	i;
 
 	i = 0;
-	while (start != end)
+	while (start != end && start->type == T_WORD)
 	{
-		if (start->type == T_WORD)
-		{
-			command[i] = ft_strdup(start->value);
-			i++;
-		}
+		command[i] = ft_strdup(start->value);
+		i++;
 		start = start->next;
 	}
 	return (command);

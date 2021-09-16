@@ -6,7 +6,7 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 19:33:05 by aalcara-          #+#    #+#             */
-/*   Updated: 2021/09/12 11:03:19 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/15 13:56:22 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,10 @@ void	get_token(t_tokendata *tk, t_token **tokens)
 {
 	t_token	*token;
 
+	if (!tk->j)
+		return ;
 	token = malloc(sizeof(*token));
-	if (!tk->j || !token)
+	if (!token)
 		return ;
 	ft_bzero(token, sizeof(*token));
 	token->value = ft_strdup(tk->buffer);

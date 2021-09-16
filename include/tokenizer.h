@@ -6,7 +6,7 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 15:02:27 by aalcara-          #+#    #+#             */
-/*   Updated: 2021/09/12 13:43:24 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/15 12:27:19 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	get_token(t_tokendata *tk, t_token **tokens);
 void	lexer(t_token *token);
 void	free_tokens(t_token **tokens);
 //utils
+char	*expand_variable(char *str, char *dest, int *i, int len);
 char	*expand_word(char *key, int len);
 bool	check_is_closed(char *str, char quote);
 char	*ft_strjoinrealloc(char *s1, char *s2, int len);
@@ -74,4 +75,6 @@ bool	special_token(t_token *token, const char *str);
 void	parse_tokens(t_token *tokens);
 void	command_parser(t_token *tokens, t_token *pipe, int *last_pipe_in);
 char	**create_command_array(t_token *start, t_token *pipe);
+void	check_redirects(t_token *current, t_token *end, int *save_std_fd);
+void	here_doc_input(char *eof, int *save_std_fd);
 #endif
