@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lsh_execute.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 22:58:36 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/09/16 17:26:29 by rdutenke         ###   ########.fr       */
+/*   Updated: 2021/09/16 14:22:08 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ static void	add_path(char **args)
 		args[0] = args_with_path;
 	}
 }
-
 
 int	lsh_execute(char **args)
 {

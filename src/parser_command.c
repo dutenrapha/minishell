@@ -6,7 +6,7 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 22:07:36 by aalcara-          #+#    #+#             */
-/*   Updated: 2021/09/14 16:04:56 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/16 14:22:39 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,15 +61,6 @@ void	command_parser(t_token *tokens, t_token *pipe, int *last_pipe_in)
 	create_pipe(pipe, last_pipe_in);
 	check_redirects(tokens, pipe, save_std_fd);
 	command = create_command_array(tokens, pipe);
-	//!remover
-	// int i = 0;
-	// printf("\n");
-	// while (command[i])
-	// {
-	// 	printf("%s\n", command[i]);
-	// 	i++;
-	// }
-	// !até aqui
 	lsh_execute(command);
 	free_command(command);
 	restore_std_fd(save_std_fd);

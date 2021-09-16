@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lsh_launch.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 21:13:17 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/09/16 17:17:53 by rdutenke         ###   ########.fr       */
+/*   Updated: 2021/09/16 14:21:30 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,7 @@ int	lsh_launch(char **args)
 		if (wpid == 0)
 			wpid = (pid_t)wpid;
 		while (!WIFEXITED(status) && !WIFSIGNALED(status))
-		{
 			wpid = waitpid(pid, &status, WUNTRACED);
-		}
 	}
 	return (1);
 }
