@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   util_env_to_hashtable.c                            :+:      :+:    :+:   */
+/*   lsh_set_local_var.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/28 14:48:00 by aalcara-          #+#    #+#             */
-/*   Updated: 2021/09/13 12:39:04 by aalcara-         ###   ########.fr       */
+/*   Created: 2021/09/13 12:30:57 by aalcara-          #+#    #+#             */
+/*   Updated: 2021/09/14 08:51:11 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,27 +36,20 @@ static char	*find_value(char *str)
 	return (ft_substr(str, i + 1, j));
 }
 
-t_hashtable	*env_to_hashtable(char **env)
+void	set_local_var(char **args)
 {
-	t_hashtable	*table;
-	int			count;
-	int			i;
-	char		*key;
-	char		*value;
+	char	*key;
+	char	*value;
 
-	i = 0;
-	count = 0;
-	while (env[count])
-		count++;
-	table = create_table(count * 2);
-	while (i < count)
+	if (args[1])
 	{
-		key = find_key(env[i]);
-		value = find_value(env[i]);
-		ht_insert(table, key, value);
-		i++;
-		free(key);
-		free(value);
+		return ;
 	}
-	return (table);
+	key = find_key(args[0]);
+	value = find_value(args[0]);
+	ht_insert(g_minishell.local_var, key, value);
+	if (ht_bool_search(g_minishell.env, key))
+		ht_insert(g_minishell.env, key, value);
+	free(key);
+	free(value);
 }

@@ -6,7 +6,7 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 21:00:48 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/09/12 14:41:03 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/15 13:54:07 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,32 +25,36 @@ void	free_array(char **array)
 	free(array);
 }
 
+void	print_tokens(t_token *tokens) //!REMOVER
+{
+	t_token	*aux;
+
+	aux = tokens;
+	printf("\n========= tokens ==========\n");
+	while (aux)
+	{
+		printf("[type = %d]  [%s]\n", aux->type, aux->value);
+		aux = aux->next;
+	}
+	printf("===========================\n\n");
+}
+
 void	lsh_loop(void)
 {
 	char	*line;
 	int		status;
 	t_token	*tokens;
-	// char	**args;
 
 	status = 1;
 	while (status)
 	{
 		loop_signals();
-		line = readline("T-RexShell$ 🦖$ ");
+		line = readline("\033[1;32mT-Rex\033[1;36mShell🦖\033[0m$ ");
 		add_history(line);
 		tokens = tokenizer(line);
-
-		// if (args == NULL)
-		// {
-		// 	ft_printf("exit\n");
-		// 	return ;
-		// }
+		print_tokens(tokens);// !apagar
 		free(line);
 		parse_tokens(tokens);
 		free_tokens(&tokens);
-
-		// args = ft_split(line, LSH_TOK_DELIM); // ! trocar por tokenizer ------------
-		// status = lsh_execute(args);
-		// free_array(args);
 	}
 }
