@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 22:58:36 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/09/16 17:07:59 by rdutenke         ###   ########.fr       */
+/*   Updated: 2021/09/16 17:26:29 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,17 @@ static bool	get_all_possible_paths(char **all_paths)
 	*all_paths = ht_search(g_minishell.env, "PATH");
 	if (!*all_paths)
 	{
-		// *all_paths = hashmap_search(g_minishell.local_vars, "PATH");
+		*all_paths = ht_search(g_minishell.local_var, "PATH");
 		// if (!*all_paths)
 		// {
 		// 	error_message(args[0], NO_FILE_OR_DIR, 127);
 		// 	return (FALSE);
 		// }
 		return (FALSE);
+	}
+	return (TRUE);
+}
+
 static bool	check_is_local_var(char **args)
 {
 	char	*aux;
@@ -60,8 +64,11 @@ static void	add_path(char **args)
 	// {
 	// 	error_message(args[0], NOT_FOUND, 127);
 	// }
-	free(args[0]);
-	args[0] = args_with_path;
+	if (args_with_path != NULL)
+	{
+		free(args[0]);
+		args[0] = args_with_path;
+	}
 }
 
 

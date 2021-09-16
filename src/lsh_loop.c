@@ -6,7 +6,7 @@
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 21:00:48 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/09/16 17:09:49 by rdutenke         ###   ########.fr       */
+/*   Updated: 2021/09/16 17:15:09 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	lsh_loop(void)
 	while (status)
 	{
 		loop_signals();
-		line = readline("T-RexShell$ 🦖$ ");
+		line = readline("\033[1;32mT-Rex\033[1;36mShell🦖\033[0m$ ");
 		if (line == NULL)
 		{
 			ft_printf("exit\n");
@@ -57,12 +57,6 @@ void	lsh_loop(void)
 		}
 		add_history(line);
 		tokens = tokenizer(line);
-
-
-		line = readline("\033[1;32mT-Rex\033[1;36mShell🦖\033[0m$ ");
-		add_history(line);
-		tokens = tokenizer(line);
-		print_tokens(tokens);// !apagar
 		free(line);
 		parse_tokens(tokens);
 		free_tokens(&tokens);

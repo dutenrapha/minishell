@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lsh_launch.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 21:13:17 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/09/14 08:48:21 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/16 17:17:53 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,14 @@ int	lsh_launch(char **args)
 	pid_t	pid;
 	pid_t	wpid;
 	int		status;
-	// char	**env;
+	char	**env;
 
 	pid = fork();
 	exec_signals();
 	if (pid == 0)
 	{
-		// env = hashtable_to_array(g_minishell.env);
-		if (execvp(args[0], args) == -1)
-		// if (execve(args[0], args, env) == -1)
+		env = hashtable_to_array(g_minishell.env);
+		if (execve(args[0], args, env) == -1)
 			ft_printf("%s: command not found\n", args[0]);
 		exit(EXIT_FAILURE);
 	}
