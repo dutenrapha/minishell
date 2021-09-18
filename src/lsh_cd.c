@@ -6,7 +6,7 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 21:02:09 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/09/18 16:49:53 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/18 17:14:41 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	lsh_cd(char **args)
 	{
 		if (chdir(args[1]) != 0)
 		{
-			ft_printf("%s\n", strerror(chdir(args[1])));
+			error_return("cd", NO_FILE_OR_DIR, 1);
 		}
 	}
 	return (1);
