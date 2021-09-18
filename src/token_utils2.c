@@ -6,7 +6,7 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 18:26:30 by aalcara-          #+#    #+#             */
-/*   Updated: 2021/09/18 18:26:51 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/18 20:13:06 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	expand_home_dir(char **dest)
 {
-	char *aux;
+	char	*aux;
 
 	free(*dest);
 	aux = ht_search(g_minishell.env, "HOME");

@@ -6,7 +6,7 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 21:20:32 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/09/18 16:52:00 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/18 19:18:51 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # define LSH_NUM_BUILTINS 7
 # define NOT_FOUND "command not found."
 # define NO_FILE_OR_DIR "no such file or directory."
+# define NOT_VALID_IDENT "not a valid identifier"
 # define NUMERIC_ARG "numeric argument required"
 # define TOO_MANT_ARG "Too many arguments"
 # define LOCAL_HASHTABLE_SIZE 50

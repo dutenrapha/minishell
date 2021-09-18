@@ -6,7 +6,7 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 21:13:17 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/09/18 17:55:51 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/18 20:13:16 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	execute_native(char **args)
 {
 	char	**env;
-	
+
 	env = hashtable_to_array(g_minishell.env);
 	if (execve(args[0], args, env) == -1)
 	{

@@ -6,7 +6,7 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 21:04:09 by aalcara-          #+#    #+#             */
-/*   Updated: 2021/09/16 14:16:36 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/18 20:10:20 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,7 @@ t_hashtable		*create_table(int size);
 // free
 void			free_item(t_ht_item *item);
 void			free_table(t_hashtable *table);
+// utils
+char			*find_key(char *str);
+char			*find_value(char *str);
 #endif

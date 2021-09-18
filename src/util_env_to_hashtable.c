@@ -6,13 +6,13 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 14:48:00 by aalcara-          #+#    #+#             */
-/*   Updated: 2021/09/13 12:39:04 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/18 20:09:53 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/header.h"
 
-static char	*find_key(char *str)
+char	*find_key(char *str)
 {
 	int	i;
 
@@ -22,7 +22,7 @@ static char	*find_key(char *str)
 	return (ft_substr(str, 0, i));
 }
 
-static char	*find_value(char *str)
+char	*find_value(char *str)
 {
 	int	i;
 	int	j;

@@ -6,44 +6,11 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 14:39:23 by aalcara-          #+#    #+#             */
-/*   Updated: 2021/09/14 12:37:45 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/18 20:11:48 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/header.h"
-
-static char	*find_key(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '=')
-		i++;
-	return (ft_substr(str, 0, i));
-}
-
-static char	*find_value(char *str)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (str[i] != '=')
-		i++;
-	j = i;
-	while (str[j] != '\0')
-		j++;
-	return (ft_substr(str, i + 1, j));
-}
-
-static int	ret_error(char *key, char *value)
-{
-	ft_putstr_fd(key, 2);
-	ft_putstr_fd(": not a valid identifier\n", 2);
-	free(key);
-	free(value);
-	return (1);
-}
 
 static int	get_key_and_value(char *str, char **key, char **value)
 {
@@ -51,7 +18,7 @@ static int	get_key_and_value(char *str, char **key, char **value)
 
 	*key = ft_strdup(str);
 	aux = ht_search(g_minishell.local_var, *key);
-	if (!(aux))
+	if (aux == NULL)
 	{
 		free(*key);
 		return (1);
@@ -60,29 +27,54 @@ static int	get_key_and_value(char *str, char **key, char **value)
 	return (0);
 }
 
+static int	check_invalid_char(char *args)
+{
+	int		j;
+
+	j = 0;
+	while (args[j] != '=' && args[j] != C_NULL)
+	{
+		if (args[j] == SPACE || args[j] == '?')
+		{
+			error_return("export", NOT_VALID_IDENT, 1);
+			return (1);
+		}
+		j++;
+	}
+	return (0);
+}
+
+static void	do_the_job(char *key, char *value)
+{
+	ht_insert(g_minishell.local_var, key, value);
+	ht_insert(g_minishell.env, key, value);
+	free(key);
+	free(value);
+}
+
 int	lsh_export(char **args)
 {
 	int		i;
+	int		check;
 	char	*key;
 	char	*value;
 
 	i = 1;
 	while (args[i])
 	{
-		if (ft_strchr(args[i], '=') && !(ft_strchr(key, SPACE)))
+		printf("arg = [%s]\n", args[i]);
+		if (check_invalid_char(args[i]) == 1)
+			return (1);
+		if (ft_strchr(args[i], '='))
 		{
 			key = find_key(args[i]);
 			value = find_value(args[i]);
+			check = 0;
 		}
 		else
-			if (get_key_and_value(args[i], &key, &value) == 1)
-				return (0);
-		if (ft_strchr(key, SPACE) || ft_strchr(key, '?'))
-			return (ret_error(key, value));
-		ht_insert(g_minishell.local_var, key, value);
-		ht_insert(g_minishell.env, key, value);
-		free(key);
-		free(value);
+			check = get_key_and_value(args[i], &key, &value);
+		if (check == 0)
+			do_the_job(key, value);
 		i++;
 	}
 	return (0);
