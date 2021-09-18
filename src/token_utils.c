@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 11:37:28 by aalcara-          #+#    #+#             */
-/*   Updated: 2021/09/14 11:42:25 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/18 19:15:11 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ char	*expand_word(char *key, int len)
 		realkey = ft_substr(key, 1, ft_strlen(key));
 	else
 		realkey = ft_substr(key, 1, len - 1);
-	printf("key = %s\n", realkey);
 	if (key[1] == '?')
 		aux = ft_itoa(g_minishell.erro);
 	else
@@ -43,7 +42,6 @@ char	*expand_word(char *key, int len)
 		if (aux == NULL)
 			aux = ht_search(g_minishell.local_var, realkey);
 	}
-	printf("value = %s\n", aux);
 	free(realkey);
 	return (aux);
 }
