@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lsh_execute.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 22:58:36 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/09/16 14:22:08 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/18 12:58:53 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ int	lsh_execute(char **args)
 	builtin_str[4] = "m_set";
 	builtin_str[5] = "m_export";
 	builtin_str[6] = "m_unset";
+	builtin_str[7] = "m_echo";
 	builtin_func[0] = &lsh_cd;
 	builtin_func[1] = &lsh_exit;
 	builtin_func[2] = &lsh_pwd;
@@ -96,6 +97,7 @@ int	lsh_execute(char **args)
 	builtin_func[4] = &lsh_set;
 	builtin_func[5] = &lsh_export;
 	builtin_func[6] = &lsh_unset;
+	builtin_func[7] = &lsh_echo;
 	if (args[0] == NULL)
 		return (1);
 	i = 0;
