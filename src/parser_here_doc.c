@@ -6,21 +6,13 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 10:36:49 by aalcara-          #+#    #+#             */
-/*   Updated: 2021/09/15 16:56:42 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/18 15:08:10 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/header.h"
 
 #define TMP_FILE	"/tmp/minishell_temp_file"
-
-void	int_here_doc(int signal)
-{
-	(void) signal;
-	g_minishell.erro = 130;
-	write(1, "\n", 1);
-	exit(130);
-}
 
 static int	create_tmp_file(void)
 {

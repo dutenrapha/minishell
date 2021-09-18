@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lsh_cd.c                                           :+:      :+:    :+:   */
+/*   parser_here_doc_signal.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/10 21:02:09 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/09/18 16:49:53 by aalcara-         ###   ########.fr       */
+/*   Created: 2021/09/15 10:36:49 by aalcara-          #+#    #+#             */
+/*   Updated: 2021/09/18 15:03:19 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/header.h"
 
-int	lsh_cd(char **args)
+void	int_here_doc(int signal)
 {
-	if (args[1] == NULL)
-	{
-		ft_printf("minishell: expected argument to \"cd\"\n");
-	}
-	else
-	{
-		if (chdir(args[1]) != 0)
-		{
-			ft_printf("%s\n", strerror(chdir(args[1])));
-		}
-	}
-	return (1);
+	(void) signal;
+	g_minishell.erro = 130;
+	write(1, "\n", 1);
+	exit(130);
 }

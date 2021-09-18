@@ -6,7 +6,7 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 19:33:05 by aalcara-          #+#    #+#             */
-/*   Updated: 2021/09/14 11:40:38 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/18 16:34:12 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ static int	lex_dquote(char *str, char **dest)
 		{
 			while ((str + i)[len] != D_QUOTE && (str + i)[len] != SPACE)
 				len++;
-			*dest = expand_variable((str + i), *dest, &i, len);
+			expand_variable((str + i), dest, &i, len);
 		}
 		else
-			*dest = ft_strjoinrealloc(*dest, (str + i), 1);
+			ft_strjoinrealloc(dest, (str + i), 1);
 		i++;
 	}
 	return (i + 1);
@@ -42,7 +42,7 @@ static int	lex_squote(char *str, char **dest)
 	while (str[i] != S_QUOTE)
 		i++;
 	if (i >= 1)
-		*dest = ft_strjoinrealloc(*dest, str, i);
+		ft_strjoinrealloc(dest, str, i);
 	return (i + 1);
 }
 
@@ -80,7 +80,7 @@ static void	handle_word_token(t_token *token)
 		else if (temp[i] == '$')
 		{
 			len = ft_strlen(temp + i);
-			token->value = expand_variable((temp + i), token->value, &i, len);
+			expand_variable((temp + i), &token->value, &i, len);
 		}
 		else
 			ft_straddchr(&token->value, temp[i]);

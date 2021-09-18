@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   token_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 11:37:28 by aalcara-          #+#    #+#             */
-/*   Updated: 2021/09/18 19:15:11 by rdutenke         ###   ########.fr       */
+/*   Updated: 2021/09/18 16:47:33 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/header.h"
 
-char	*expand_variable(char *str, char *dest, int *i, int len)
+void	expand_variable(char *str, char **dest, int *i, int len)
 {
 	char	*aux;
 
@@ -20,30 +20,37 @@ char	*expand_variable(char *str, char *dest, int *i, int len)
 		len = 2;
 	aux = expand_word(str, len);
 	if (aux)
-		dest = ft_strjoinrealloc(dest, aux, ft_strlen(aux));
+		ft_strjoinrealloc(dest, aux, ft_strlen(aux));
+	free(aux);
 	*i = *i + len - 1;
-	return (dest);
+	return ;
 }
 
 char	*expand_word(char *key, int len)
 {
 	char	*aux;
+	char	*temp;
 	char	*realkey;
 
+	temp = NULL;
 	if (len == 0)
 		realkey = ft_substr(key, 1, ft_strlen(key));
 	else
 		realkey = ft_substr(key, 1, len - 1);
 	if (key[1] == '?')
-		aux = ft_itoa(g_minishell.erro);
+	{
+		temp = ft_itoa(g_minishell.erro);
+	}
 	else
 	{
 		aux = ht_search(g_minishell.env, realkey);
 		if (aux == NULL)
 			aux = ht_search(g_minishell.local_var, realkey);
+		if (aux)
+			temp = ft_strdup(aux);
 	}
 	free(realkey);
-	return (aux);
+	return (temp);
 }
 
 bool	check_is_closed(char *str, char quote)
@@ -58,19 +65,17 @@ bool	check_is_closed(char *str, char quote)
 	return (FALSE);
 }
 
-char	*ft_strjoinrealloc(char *s1, char *s2, int len)
+void	ft_strjoinrealloc(char **s1, char *s2, int len)
 {
-	char	*aux;
 	char	*aux2;
-	int		s1len;
+	char	*aux1;
 
-	s1len = ft_strlen(s1);
-	aux = ft_substr(s2, 0, len);
-	aux2 = malloc(sizeof(char) * (s1len + len + 1));
-	aux2 = ft_strjoin(s1, aux);
-	free(aux);
-	free(s1);
-	return (aux2);
+	aux1 = ft_strdup(*s1);
+	aux2 = ft_substr(s2, 0, len);
+	free(*s1);
+	*s1 = ft_strjoin(aux1, aux2);
+	free(aux1);
+	free(aux2);
 }
 
 bool	special_token(t_token *token, const char *str)

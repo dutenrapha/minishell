@@ -6,7 +6,7 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 21:13:17 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/09/16 14:21:30 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/18 16:47:07 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	lsh_launch(char **args)
 	{
 		env = hashtable_to_array(g_minishell.env);
 		if (execve(args[0], args, env) == -1)
-			ft_printf("%s: command not found\n", args[0]);
+			error_return(args[0], NOT_FOUND, 127);
 		exit(EXIT_FAILURE);
 	}
 	if (pid < 0)
