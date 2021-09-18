@@ -6,7 +6,7 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 11:37:28 by aalcara-          #+#    #+#             */
-/*   Updated: 2021/09/18 16:27:14 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/18 16:47:33 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	expand_variable(char *str, char **dest, int *i, int len)
 	aux = expand_word(str, len);
 	if (aux)
 		ft_strjoinrealloc(dest, aux, ft_strlen(aux));
+	free(aux);
 	*i = *i + len - 1;
 	return ;
 }
@@ -28,22 +29,28 @@ void	expand_variable(char *str, char **dest, int *i, int len)
 char	*expand_word(char *key, int len)
 {
 	char	*aux;
+	char	*temp;
 	char	*realkey;
 
+	temp = NULL;
 	if (len == 0)
 		realkey = ft_substr(key, 1, ft_strlen(key));
 	else
 		realkey = ft_substr(key, 1, len - 1);
 	if (key[1] == '?')
-		aux = ft_itoa(g_minishell.erro);
+	{
+		temp = ft_itoa(g_minishell.erro);
+	}
 	else
 	{
 		aux = ht_search(g_minishell.env, realkey);
 		if (aux == NULL)
 			aux = ht_search(g_minishell.local_var, realkey);
+		if (aux)
+			temp = ft_strdup(aux);
 	}
 	free(realkey);
-	return (aux);
+	return (temp);
 }
 
 bool	check_is_closed(char *str, char quote)

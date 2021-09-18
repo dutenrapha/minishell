@@ -6,7 +6,7 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 15:28:35 by aalcara-          #+#    #+#             */
-/*   Updated: 2021/09/18 15:53:49 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/18 16:50:46 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	check_is_builtin(char *arg)
 {
-	int	i;
+	int		i;
 	char	*builtin_str[LSH_NUM_BUILTINS];
 
 	i = 0;
@@ -34,7 +34,7 @@ int	check_is_builtin(char *arg)
 	return (-1);
 }
 
-int execute_builtin(int i, char **args)
+int	execute_builtin(int i, char **args)
 {
 	int		(*builtin_func[LSH_NUM_BUILTINS])(char **);
 
