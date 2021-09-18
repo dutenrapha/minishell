@@ -6,7 +6,7 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 19:33:05 by aalcara-          #+#    #+#             */
-/*   Updated: 2021/09/18 18:01:51 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/18 18:26:28 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,9 @@ static void	handle_word_token(t_token *token)
 		else if (temp[i] == S_QUOTE && check_is_closed((temp + i), S_QUOTE))
 			i += lex_squote((temp + i + 1), &token->value);
 		else if (temp[i] == '$')
-		{
-			len = ft_strlen(temp + i);
-			expand_variable((temp + i), &token->value, &i, len);
-		}
+			expand_variable((temp + i), &token->value, &i, ft_strlen(temp + i));
+		else if (i == 0 && temp[i] == '~' && temp[i + 1] == C_NULL)
+			expand_home_dir(&token->value);
 		else
 			ft_straddchr(&token->value, temp[i]);
 		i++;

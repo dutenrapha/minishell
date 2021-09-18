@@ -6,7 +6,7 @@
 /*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 15:02:27 by aalcara-          #+#    #+#             */
-/*   Updated: 2021/09/18 16:19:01 by aalcara-         ###   ########.fr       */
+/*   Updated: 2021/09/18 18:27:05 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ char	*expand_word(char *key, int len);
 bool	check_is_closed(char *str, char quote);
 void	ft_strjoinrealloc(char **s1, char *s2, int len);
 bool	special_token(t_token *token, const char *str);
+void	expand_home_dir(char **dest);
 
 //parser
 void	parse_tokens(t_token *tokens);
