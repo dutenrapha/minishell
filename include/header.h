@@ -3,20 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 21:20:32 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/09/18 12:59:41 by rdutenke         ###   ########.fr       */
+/*   Updated: 2021/09/18 15:49:59 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HEADER_H
 # define HEADER_H
 # define LSH_RL_BUFSIZE 1024
-# define LSH_NUM_BUILTINS 8
-# define LSH_TOK_DELIM ' '
+# define LSH_NUM_BUILTINS 7
 # define NOT_FOUND "command not found."
 # define NO_FILE_OR_DIR "no such file or directory."
+# define NUMERIC_ARG "numeric argument required"
+# define TOO_MANT_ARG "Too many arguments"
 # define LOCAL_HASHTABLE_SIZE 50
 # include <stdlib.h>
 # include <stdio.h>
@@ -61,6 +62,8 @@ int			lsh_cd(char **args);
 int			lsh_exit(char **args);
 int			lsh_pwd(char **args);
 int			lsh_execute(char **args);
+int			check_is_builtin(char *arg);
+int 		execute_builtin(int i, char **args);
 int			lsh_launch(char **args);
 int			lsh_env(char **args);
 t_hashtable	*env_to_hashtable(char **env);

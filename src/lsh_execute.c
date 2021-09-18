@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lsh_execute.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: aalcara- <aalcara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 22:58:36 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/09/18 12:58:53 by rdutenke         ###   ########.fr       */
+/*   Updated: 2021/09/18 15:55:28 by aalcara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,42 +73,20 @@ static void	add_path(char **args)
 
 int	lsh_execute(char **args)
 {
-	int		i;
-	char	*builtin_str[LSH_NUM_BUILTINS];
-	int		(*builtin_func[LSH_NUM_BUILTINS])(char **);
+	int i;
 
+	i = 0;
 	if (check_is_local_var(args) == TRUE)
 	{
 		set_local_var(args);
 		args = (args + 1);
 	}
-	builtin_str[0] = "m_cd";
-	builtin_str[1] = "m_exit";
-	builtin_str[2] = "m_pwd";
-	builtin_str[3] = "m_env";
-	builtin_str[4] = "m_set";
-	builtin_str[5] = "m_export";
-	builtin_str[6] = "m_unset";
-	builtin_str[7] = "m_echo";
-	builtin_func[0] = &lsh_cd;
-	builtin_func[1] = &lsh_exit;
-	builtin_func[2] = &lsh_pwd;
-	builtin_func[3] = &lsh_env;
-	builtin_func[4] = &lsh_set;
-	builtin_func[5] = &lsh_export;
-	builtin_func[6] = &lsh_unset;
-	builtin_func[7] = &lsh_echo;
 	if (args[0] == NULL)
 		return (1);
-	i = 0;
-	while (i < LSH_NUM_BUILTINS)
-	{
-		if (ft_strncmp(args[0], builtin_str[i], ft_strlen(args[0])) == 0)
-		{
-			return ((*builtin_func[i])(args));
-		}
-		i++;
-	}
+	i = check_is_builtin(args[0]);
+	if (i >= 0)
+		return (execute_builtin(i, args));
+		// return ((*builtin_func[i])(args));
 	add_path(args);
 	return (lsh_launch(args));
 }
