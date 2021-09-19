@@ -62,7 +62,6 @@ int	lsh_export(char **args)
 	i = 1;
 	while (args[i])
 	{
-		printf("arg = [%s]\n", args[i]);
 		if (check_invalid_char(args[i]) == 1)
 			return (1);
 		if (ft_strchr(args[i], '='))

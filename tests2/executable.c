@@ -14,5 +14,5 @@
 
 int	main(void)
 {
-	printf("TESTE 1!\n");
+	printf("TESTE 2!\n");
 }
